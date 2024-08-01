@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:file_picker/file_picker.dart';
 import 'dart:io';
+import 'video_player_widget.dart';
 
 class ThirdPage extends StatefulWidget {
   const ThirdPage({super.key});
@@ -11,14 +12,20 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
-  File? _image;
+  File? _media;
+  bool _isImage = true; // 미디어 타입을 저장할 변수
 
-  Future<void> _pickImage() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
+  Future<void> _pickMedia() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.media,
+    );
+
+    if (result != null && result.files.single.path != null) {
       setState(() {
-        _image = File(image.path);
+        _media = File(result.files.single.path!);
+        String? mimeType = result.files.single.extension;
+        _isImage = mimeType != null &&
+            (mimeType == 'jpg' || mimeType == 'jpeg' || mimeType == 'png');
       });
     }
   }
@@ -49,12 +56,14 @@ class _ThirdPageState extends State<ThirdPage> {
                 child: const Text('Go to Home Page'),
               ),
               SizedBox(height: 20),
-              _image == null
-                  ? const Text('No image selected.')
-                  : Image.file(_image!),
+              _media == null
+                  ? const Text('No media selected.')
+                  : _isImage
+                      ? Image.file(_media!)
+                      : VideoPlayerWidget(file: _media!),
               ElevatedButton(
-                onPressed: _pickImage,
-                child: const Text('Pick Image from Gallery'),
+                onPressed: _pickMedia,
+                child: const Text('Pick Image or Video from Gallery'),
               ),
             ],
           ),
