@@ -1,7 +1,12 @@
 import 'dart:ui';
+
 import 'package:edit_x/styles/app_colors.dart';
+
+import '../common_widgets/common_svg.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:grain/grain.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -33,9 +38,19 @@ class SecondPage extends StatelessWidget {
                     },
                     child: const Text('Go to Third Page'),
                   ),
+                  const GrainFiltered(
+                    scale: 0.2,
+                    child: CommonSvg(
+                      width: 100,
+                      height: 100,
+                      assets: 'assets/logo/main_logo.svg',
+                      color: AppColors.battery,
+                    ),
+                  ),
                   const SizedBox(
                     height: 10000,
-                  )
+                  ),
+                  // const CommonSvg(width: 50, height: 50, assets: 'test.svg'),
                 ],
               ),
             ),

@@ -1,5 +1,5 @@
-import 'package:edit_x/common_widgets/common_text.dart';
-import 'package:edit_x/styles/app_colors.dart';
+import 'common_text.dart';
+import '../styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CommonTextButton extends StatelessWidget {

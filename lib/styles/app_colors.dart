@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+// 
 class AppColors {
   static const white = Color(0xffffffff);
   static const black = Color(0xff000000);
@@ -17,3 +17,6 @@ class AppColors {
   static const battery = Color(0xff0EBB0A);
   static const transparent = Colors.transparent;
 }
+
+
+

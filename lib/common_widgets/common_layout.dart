@@ -1,4 +1,4 @@
-import 'package:edit_x/styles/app_colors.dart';
+import '../styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CommonLayout extends StatelessWidget {
