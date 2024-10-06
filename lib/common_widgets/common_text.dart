@@ -15,8 +15,8 @@ class CommonText extends StatelessWidget {
     this.decorationStyle,
     this.decorationColor,
     this.fontFamily,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String text;
   final int? maxLines;

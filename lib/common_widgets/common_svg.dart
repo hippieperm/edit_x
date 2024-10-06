@@ -1,4 +1,4 @@
-import 'package:edit_x/styles/app_colors.dart';
+import '../styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,6 +30,7 @@ class CommonSvg extends StatelessWidget {
         height: height,
         colorFilter: ColorFilter.mode(color, blendMode),
       ),
+
     );
   }
 }
